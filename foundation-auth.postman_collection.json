@@ -1,0 +1,262 @@
+{
+	"info": {
+		"_postman_id": "f6c2da8f-1ffd-4dbb-9f8f-b4cd23238011",
+		"name": "REST API user Authontication and Authorization",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "13203671",
+		"_collection_link": "https://interstellar-flare-574578.postman.co/workspace/kcs~edc7b650-4951-4a42-8545-3a737bc277e4/collection/13203671-f6c2da8f-1ffd-4dbb-9f8f-b4cd23238011?action=share&source=collection_link&creator=13203671"
+	},
+	"item": [
+		{
+			"name": "Register",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"John Doe3\",\r\n  \"email\": \"john1@example.com\",\r\n  \"password\": \"123456\",\r\n  \"role\": \"moderator\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/api/auth/register",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"auth",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"john@example.com\",\r\n  \"password\": \"123456\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/api/auth/login",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Current User",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoieDM5dlZON2FNMzlObTcyVyIsImlhdCI6MTczOTEyNjc3NiwiZXhwIjoxNzM5MTMwMzc2LCJzdWIiOiJhY2Nlc3NBUEkifQ.PbXIFJl1QQ-rukQwyIj1HfovrhQdktHZrxYdJrwKxmw",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/api/users/current",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"users",
+						"current"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Role base access > admin",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoieDM5dlZON2FNMzlObTcyVyIsImlhdCI6MTczOTEyNzAwNiwiZXhwIjoxNzM5MTMwNjA2LCJzdWIiOiJhY2Nlc3NBUEkifQ.mA4TLV5YL5iC67C2H2Xm2LdXBXMYUsj6ijf4WQrNp0A",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:3000/api/admin",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"admin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Role base access > member",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoieDM5dlZON2FNMzlObTcyVyIsImlhdCI6MTczOTEyNzAwNiwiZXhwIjoxNzM5MTMwNjA2LCJzdWIiOiJhY2Nlc3NBUEkifQ.mA4TLV5YL5iC67C2H2Xm2LdXBXMYUsj6ijf4WQrNp0A",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:3000/api/member",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"member"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Role base access > moderator",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/api/moderator",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"moderator"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Refresh token",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"refreshToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoieDM5dlZON2FNMzlObTcyVyIsImlhdCI6MTczOTEzMDM2NSwiZXhwIjoxNzM5MTMwNDg1LCJzdWIiOiJyZWZyZXNoVG9rZW4ifQ.KjhYE3eoz_Waj3NcAA3ZptU9BieUdbDbpfSmu3oCbZA\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/api/auth/refresh-token",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"auth",
+						"refresh-token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Logout",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoieDM5dlZON2FNMzlObTcyVyIsImlhdCI6MTczOTEzMjQxMiwiZXhwIjoxNzM5MTM0MjEyLCJzdWIiOiJhY2Nlc3NBUEkifQ.eluzbepOyCwbDh4MVLMTHPB669AOb0TS7R_JBGC4ul4",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:3000/api/auth/logout",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"auth",
+						"logout"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
